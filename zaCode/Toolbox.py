@@ -1,24 +1,8 @@
-from nltk.corpus import stopwords
+import collections
+
 from nltk.collocations import BigramCollocationFinder
 from nltk.metrics import BigramAssocMeasures
-from nltk.corpus import movie_reviews
-import collections
-from nltk.classify import NaiveBayesClassifier
-from nltk.classify.util import accuracy
-from nltk.classify import DecisionTreeClassifier
-from nltk.classify import MaxentClassifier
-from nltk.classify import scikitlearn
-from nltk.classify.scikitlearn import SklearnClassifier
-from sklearn.naive_bayes import MultinomialNB, BernoulliNB
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC, LinearSVC, NuSVC
-from nltk import metrics
-from nltk.metrics import BigramAssocMeasures
 from nltk.probability import FreqDist, ConditionalFreqDist
-import itertools
-from nltk.classify import ClassifierI
-
-import collections
 
 
 def bag_of_words(words):
@@ -43,7 +27,7 @@ def bag_of_bigrams_words_in_set(words, goodwords):
 
 
 def label_feats_from_corpus(corp, feature_detector):
-    print("Computing label features from corpus...")
+    print("Computing label features from corpus...\n")
 
     label_feats = collections.defaultdict(list)
 
@@ -57,7 +41,7 @@ def label_feats_from_corpus(corp, feature_detector):
 
 
 def split_label_feats(lfeats, split=0.75):
-    print("Computing train & test split....")
+    print("Computing train & test split....\n")
 
     train_feats = []
     test_feats = []
@@ -72,7 +56,7 @@ def split_label_feats(lfeats, split=0.75):
 
 
 def high_information_words(labelled_words, score_fn=BigramAssocMeasures.chi_sq, min_score=5):
-    print("Computing high information words...")
+    print("Computing high information words...\n")
 
     word_fd = FreqDist()
     label_word_fd = ConditionalFreqDist()
